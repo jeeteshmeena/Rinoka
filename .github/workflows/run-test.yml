@@ -75,7 +75,7 @@ jobs:
       - name: Test run
         run: |
           poetry install --no-root
-          poetry run anjani
+          poetry run rinoka
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           API_ID: ${{ secrets.API_ID }}
@@ -110,7 +110,7 @@ jobs:
       - name: Test run
         run: |
           poetry install --no-root -E all
-          poetry run anjani
+          poetry run rinoka
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           API_ID: ${{ secrets.API_ID }}

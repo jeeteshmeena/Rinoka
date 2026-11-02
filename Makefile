@@ -65,8 +65,8 @@ _bump:
 	@echo "$(GREEN)Bumping version to v$$NEW_VERSION$(END)"
 
 	@sed -i "s/version = \"$(VERSION)\"/version = \"$$NEW_VERSION\"/g" pyproject.toml > /dev/null;
-	@sed -i "s/__version__ = \"$(VERSION)\"/__version__ = \"$$NEW_VERSION\"/g" anjani/__init__.py > /dev/null;
-	@git add pyproject.toml anjani/__init__.py > /dev/null
+	@sed -i "s/__version__ = \"$(VERSION)\"/__version__ = \"$$NEW_VERSION\"/g" rinoka/__init__.py > /dev/null;
+	@git add pyproject.toml rinoka/__init__.py > /dev/null
 
 	@echo "$(GREEN)Commiting changes$(END)"
 	@git commit -m "Bump version to v$$NEW_VERSION"

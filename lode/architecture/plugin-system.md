@@ -1,16 +1,16 @@
 # Plugin System
 
-Anjani's feature modules are **class-based plugins**. Understanding this model is essential for adding or modifying features.
+Rinoka's feature modules are **class-based plugins**. Understanding this model is essential for adding or modifying features.
 
 ## Plugin base
-`anjani/plugin.py` defines `class Plugin`:
+`rinoka/plugin.py` defines `class Plugin`:
 - Class vars: `name: ClassVar[str]`, `disabled: ClassVar[bool]`, `helpable: ClassVar[bool]`.
-- Instance: `self.bot` (the `Anjani` object), `self.log`, `self.comment`.
+- Instance: `self.bot` (the `Rinoka` object), `self.log`, `self.comment`.
 - `__init__(self, bot)` sets up the logger; `get_text(chat_id, text_name, *args, **kwargs)` renders localized strings for the user's language.
 
 Example:
 ```python
-from anjani import plugin
+from rinoka import plugin
 
 class MyFeature(plugin.Plugin):
     name = "myfeature"
@@ -22,7 +22,7 @@ class MyFeature(plugin.Plugin):
 (Concrete command/listener registration is via decorators — see below.)
 
 ## Commands
-`anjani/command.py` provides the `filters(...)` decorator:
+`rinoka/command.py` provides the `filters(...)` decorator:
 ```python
 @command.filters(filters=CUSTOM_FILTER, aliases=["alias1"])
 async def my_cmd(self, ctx: command.Context) -> Optional[str]:
@@ -33,7 +33,7 @@ async def my_cmd(self, ctx: command.Context) -> Optional[str]:
 - Handlers are `async`; they return `Optional[str]` (a reply string) or `None`.
 
 ## Listeners
-`anjani/listener.py` defines the `Listener` type. `EventDispatcher.register_listener` wires async handlers to Pyrogram update types. `dispatch_event` fans an update out to all matching listeners.
+`rinoka/listener.py` defines the `Listener` type. `EventDispatcher.register_listener` wires async handlers to Pyrogram update types. `dispatch_event` fans an update out to all matching listeners.
 
 ## Dispatchers
 - **CommandDispatcher** (`core/command_dispatcher.py`): `register_command(s)`, `unregister_command(s)`, `command_predicate`, `on_command`. It builds a map of command name → handler and checks predicates before invoking.

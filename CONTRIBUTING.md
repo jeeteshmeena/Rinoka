@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-Thank you for your interest in contributing to Anjani! Don't be afraid to contribute your ideas, even if they seem small. All contributions are welcome, and they are greatly appreciated! Every little bit helps, and credit will always be given. However, we comply with some strict policies to ensure that the project is maintained in a consistent quality and manner.
+Thank you for your interest in contributing to Rinoka! Don't be afraid to contribute your ideas, even if they seem small. All contributions are welcome, and they are greatly appreciated! Every little bit helps, and credit will always be given. However, we comply with some strict policies to ensure that the project is maintained in a consistent quality and manner.
 
 Please see the [Code of Conduct](https://github.com/userbotindo/Anjani/blob/master/CODE_OF_CONDUCT.md) when contributing to this project.
 

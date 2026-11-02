@@ -1,6 +1,6 @@
 # Storage
 
-Anjani uses two data stores with distinct responsibilities.
+Rinoka uses two data stores with distinct responsibilities.
 
 ## MongoDB — domain data (via DatabaseProvider)
 - **Purpose:** users, chats, settings, notes, federations, ban lists, per-group config.

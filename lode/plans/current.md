@@ -1,6 +1,6 @@
 # Current Plans & Roadmap
 
-Active and upcoming work for Anjani.
+Active and upcoming work for Rinoka.
 
 > This file is the living roadmap. It was initialized on the Lode scaffold; populate with real tasks as they are decided.
 

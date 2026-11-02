@@ -1,6 +1,6 @@
 # Util Helpers
 
-`anjani/util/` holds shared helpers used across the bot.
+`rinoka/util/` holds shared helpers used across the bot.
 
 ## Files
 | File | Purpose |

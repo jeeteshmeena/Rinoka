@@ -1,0 +1,2 @@
+# Local AI vision model for AI Shield (runs on CPU, works on Oracle ARM and x86)
+nudenet==3.4.2

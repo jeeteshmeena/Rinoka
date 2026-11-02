@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "anjani"
+name = "rinoka"
 version = "2.14.21"
-description = "Telegram group management bot"
+description = "AI-powered Telegram group guardian (fork of Anjani)"
 license = "GPL-3.0-or-later"
 authors = [
     "Gaung Ramadhan <hi@mrmiss.dev>",
@@ -9,7 +9,7 @@ authors = [
 ]
 readme = "README.md"
 homepage = "https://userbotindo.com/anjani"
-repository = "https://github.com/userbotindo/anjani"
+repository = "https://github.com/userbotindo/rinoka"
 documentation = "https://userbotindo.com/anjani/docs/home"
 keywords = ["chatbot", "bot", "python", "telegram-bot", "pyrogram"]
 classifiers = [
@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [tool.poetry.scripts]
-anjani = "anjani.main:start"
+rinoka = "rinoka.main:start"
 
 [tool.poetry.dependencies]
 python = "~=3.9"
@@ -95,7 +95,7 @@ known_third_party = [
 # Pylint Config
 #
 [tool.pylint]
-ignore = "anjani/util/db"
+ignore = "rinoka/util/db"
 
 [tool.pylint.messages_control]
 disable = [
@@ -120,7 +120,7 @@ max-args = 15
 
 # Semantic Release Config
 [tool.semantic_release]
-version_variable = "anjani/__init__.py:__version__"
+version_variable = "rinoka/__init__.py:__version__"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

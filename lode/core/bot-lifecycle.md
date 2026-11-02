@@ -1,11 +1,11 @@
 # Bot Lifecycle & Core Mixins
 
-How the Anjani bot starts, runs, and stops.
+How the Rinoka bot starts, runs, and stops.
 
 ## Entry point
-- `anjani/main.py::start()` is the console entry point (`anjani = "anjani.main:start"`).
-- `anjani/core/anjani_bot.py::class Anjani(TelegramBot, DatabaseProvider, PluginExtenter, CommandDispatcher, EventDispatcher)` is the composed bot.
-- `Anjani.__init__(self, config)` builds the object; `init_and_run()` starts the runtime; `stop()` tears down.
+- `rinoka/main.py::start()` is the console entry point (`rinoka = "rinoka.main:start"`).
+- `rinoka/core/rinoka_bot.py::class Rinoka(TelegramBot, DatabaseProvider, PluginExtenter, CommandDispatcher, EventDispatcher)` is the composed bot.
+- `Rinoka.__init__(self, config)` builds the object; `init_and_run()` starts the runtime; `stop()` tears down.
 
 ## TelegramBot mixin
 `core/telegram_bot.py` owns the Pyrogram/Pyrofork client and the MTProto connection. It provides the `.client` surface plugins use to call Telegram APIs (`send_message`, `ban_chat_member`, etc.).
@@ -24,10 +24,10 @@ How the Anjani bot starts, runs, and stops.
 sequenceDiagram
     participant U as user
     participant M as main.start
-    participant B as Anjani
+    participant B as Rinoka
     participant T as TelegramBot
     participant P as PluginExtenter
-    M->>B: Anjani(config)
+    M->>B: Rinoka(config)
     B->>B: init mixins
     B->>P: load_all_plugins()
     B->>T: init_and_run()
@@ -38,6 +38,6 @@ sequenceDiagram
 ```
 
 ## Invariants
-- One composed `Anjani` object per process.
+- One composed `Rinoka` object per process.
 - Plugins are loaded after init and before `init_and_run`.
 - Storage and DB are torn down on `stop`.

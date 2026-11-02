@@ -1,38 +1,35 @@
-FROM python:3.10-slim-bullseye as base
+FROM python:3.10-slim-bookworm AS base
 
 ENV POETRY_NO_INTERACTION=true \
     POETRY_VIRTUALENVS_IN_PROJECT=true \
     POETRY_VIRTUALENVS_CREATE=true \
     POETRY_CACHE_DIR='/tmp/poetry_cache' \
-    PYTHONDONTWRITEBYTECODE=1
-
-RUN apt-get -qq update && \
-    apt-get -qq install -y --no-install-recommends curl gcc apt-transport-https ca-certificates gnupg && \
-    curl -sLf --retry 3 --tlsv1.2 --proto "=https" 'https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key' | gpg --dearmor -o /usr/share/keyrings/doppler-archive-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/doppler-archive-keyring.gpg] https://packages.doppler.com/public/cli/deb/debian any-version main" | tee /etc/apt/sources.list.d/doppler-cli.list && \
-    apt-get update && \
-    apt-get -y install doppler
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 
-FROM base as builder
+FROM base AS builder
 WORKDIR /app
 
+RUN apt-get -qq update && \
+    apt-get -qq install -y --no-install-recommends gcc git && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir poetry
+
 COPY pyproject.toml poetry.lock ./
-
-RUN pip install --upgrade pip \
-    && pip install poetry
-
 RUN poetry install --no-root --only main -E uvloop
 
-RUN apt-get -qq install -y --no-install-recommends git
+# AI Shield vision model (NudeNet + onnxruntime + OpenCV headless)
+COPY requirements-ai.txt ./
+RUN .venv/bin/pip install --no-cache-dir -r requirements-ai.txt
 
 ARG USERBOTINDO_ACCESS_TOKEN
 COPY ./preinstall.sh ./
-RUN chmod +x ./preinstall.sh
-RUN ./preinstall.sh && rm -rf $POETRY_CACHE_DIR
+RUN chmod +x ./preinstall.sh && ./preinstall.sh && rm -rf $POETRY_CACHE_DIR
 
 
-FROM base as runner
+FROM base AS runner
 WORKDIR /app
 
 ENV VENV_PATH=/app/.venv \
@@ -42,4 +39,4 @@ COPY --from=builder $VENV_PATH $VENV_PATH
 
 COPY . .
 
-CMD ["python", "-m", "anjani"]
+CMD ["python", "-m", "rinoka"]

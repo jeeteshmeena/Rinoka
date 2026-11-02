@@ -1,5 +1,5 @@
 name: Bug Report (core)
-description: Create a bug report specific for Anjani-core
+description: Create a bug report specific for Rinoka-core
 title: "[BUG] "
 labels: ["type: bug", "scope: core", "status: triage"]
 body:

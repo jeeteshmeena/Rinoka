@@ -1,9 +1,7 @@
-﻿version: "3.9"
-
 services:
-  anjani:
-    image: anjani
-    container_name: anjaniBot
+  rinoka:
+    image: rinoka
+    container_name: rinokaBot
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,20 +11,21 @@ services:
       - config.env
     restart: unless-stopped
 
-# # Uncomment the following lines to use a local MongoDB database
+# Using MongoDB Atlas? Keep DB_URI in config.env and leave the block below commented.
+# Want MongoDB on the same VPS instead? Uncomment it and set
+# DB_URI=mongodb://rinoka:CHANGE_ME@mongo in config.env.
 #     depends_on:
 #       - mongo
-#     environment:
-#       DB_URI: "mongodb://anjani:mypasswd@mongo"
-
+#
 #   mongo:
-#     image: "mongo:latest"
-#     container_name: anjaniMongo
+#     image: "mongo:7"
+#     container_name: rinokaMongo
+#     restart: unless-stopped
 #     volumes:
-#       - "mongo_anjani:/data/db"
+#       - "mongo_rinoka:/data/db"
 #     environment:
-#       MONGO_INITDB_ROOT_USERNAME: anjani
-#       MONGO_INITDB_ROOT_PASSWORD: mypasswd
+#       MONGO_INITDB_ROOT_USERNAME: rinoka
+#       MONGO_INITDB_ROOT_PASSWORD: CHANGE_ME
 
 # volumes:
-#   mongo_anjani:
+#   mongo_rinoka:

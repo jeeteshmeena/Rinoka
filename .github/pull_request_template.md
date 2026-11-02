@@ -1,6 +1,6 @@
 <!--
 
-Thanks for submitting a Pull Request! Contributors like you keep Anjani Awesome!
+Thanks for submitting a Pull Request! Contributors like you keep Rinoka Awesome!
 
 Please make sure that the pull request is limited to one type of scope (bugs, feature, etc.) and keep it as small as possible.
 If you need multiple types of scope, We recommend opening multiple pull requests instead of opening a huge one.

@@ -18,8 +18,8 @@ from inspect import signature
 
 import pytest
 
-from anjani.error import BadArgument
-from anjani.util.converter import parse_arguments
+from rinoka.error import BadArgument
+from rinoka.util.converter import parse_arguments
 
 from . import Context, Message
 

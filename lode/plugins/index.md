@@ -1,6 +1,6 @@
 # Plugin Inventory
 
-Anjani ships plugins in three locations. This is the current inventory (as of the scaffold).
+Rinoka ships plugins in three locations. This is the current inventory (as of the scaffold).
 
 ## plugins/ — user-facing feature modules (22 files)
 | File | Likely purpose |

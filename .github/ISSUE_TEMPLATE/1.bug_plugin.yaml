@@ -1,5 +1,5 @@
 name: Bug Report
-description: Create a bug report for Anjani
+description: Create a bug report for Rinoka
 title: "[BUG] "
 labels: ["type: bug", "scope: general", "status: triage"]
 body:
