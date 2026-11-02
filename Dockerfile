@@ -12,7 +12,7 @@ FROM base AS builder
 WORKDIR /app
 
 RUN apt-get -qq update && \
-    apt-get -qq install -y --no-install-recommends gcc git && \
+    apt-get -qq install -y --no-install-recommends build-essential git && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir poetry
@@ -31,6 +31,11 @@ RUN chmod +x ./preinstall.sh && ./preinstall.sh && rm -rf $POETRY_CACHE_DIR
 
 FROM base AS runner
 WORKDIR /app
+
+# OpenMP runtime for onnxruntime / OpenCV (NudeNet)
+RUN apt-get -qq update && \
+    apt-get -qq install -y --no-install-recommends libgomp1 && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV VENV_PATH=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
